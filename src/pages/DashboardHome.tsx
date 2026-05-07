@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Card, CardContent, Typography, Box, Button, LinearProgress, List, ListItem, ListItemIcon, ListItemText, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Card, CardContent, Typography, Box, Button, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Timeline, Person, Work, Info } from '@mui/icons-material';
 
 export default function DashboardHome() {
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     totalUsers: 154,
     activeUsers: 89,
     totalProjects: 42,
     activeProjects: 12
   });
 
-  const [systemHealth, setSystemHealth] = useState({
+  const [systemHealth] = useState({
     status: 'healthy',
     cpu: 24,
     memory: 45,
     disk: 60
   });
 
-  const [recentActivity, setRecentActivity] = useState([
+  const [recentActivity] = useState([
     { type: 'user', action: 'New User Registered', description: 'John Doe joined the platform', timestamp: new Date() },
     { type: 'project', action: 'Project Updated', description: 'IoT Sensor network V2 deployed', timestamp: new Date(Date.now() - 3600000) },
     { type: 'info', action: 'System Backup', description: 'Automated database backup completed', timestamp: new Date(Date.now() - 7200000) },
@@ -73,17 +73,17 @@ export default function DashboardHome() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
               <Typography variant="body2" gutterBottom>CPU</Typography>
-              <LinearProgress variant="determinate" value={systemHealth.cpu} color={getHealthColor(systemHealth.status) as any} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
+              <LinearProgress variant="determinate" value={systemHealth.cpu} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.cpu}%</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="body2" gutterBottom>Memory</Typography>
-              <LinearProgress variant="determinate" value={systemHealth.memory} color={getHealthColor(systemHealth.status) as any} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
+              <LinearProgress variant="determinate" value={systemHealth.memory} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.memory}%</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="body2" gutterBottom>Disk</Typography>
-              <LinearProgress variant="determinate" value={systemHealth.disk} color={getHealthColor(systemHealth.status) as any} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
+              <LinearProgress variant="determinate" value={systemHealth.disk} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.disk}%</Typography>
             </Grid>
           </Grid>

@@ -22,7 +22,7 @@ const initialUsers = [
 ];
 
 export default function UserManagement() {
-  const [users, setUsers] = useState(initialUsers);
+  const [users] = useState(initialUsers);
 
   return (
     <Box>
