@@ -1,82 +1,24 @@
-# Dependencias
-node_modules/
-
-# Build
-/dist/
-/build/
-
-# Cache
-.cache/
-
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
 
 # Editor directories and files
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Local env files
-.env
-.env.local
-.env.*.local
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
-
-# Package Manager
-yarn-error.log
-yarn-debug.log*
-npm-debug.log*
-
-# Testing
-/coverage/
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Local env files
-.env
-.env.local
-.env.*.local
-
-# Vercel
-.vercel
-.vercelignore
-
-# Netlify
-.netlify
-
-# TypeScript
-*.tsbuildinfo
-
-# Next.js
-.next/
-out/
-
-# Storybook
-storybook-static/
-
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
