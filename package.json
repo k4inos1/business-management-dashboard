@@ -13,7 +13,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.19.1",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.1.0",
     "antd": "^5.25.4",
     "parcel-bundler": "^1.12.5",
