@@ -1,77 +1,73 @@
-# Business Management Dashboard
+# React + TypeScript + Vite
 
-A React-based Business Management Dashboard that provides a unified interface for managing customers, products, orders, and reports. Built with **React 19** and **Material UI (MUI)**.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-| Module        | Description                                                            |
-|---------------|------------------------------------------------------------------------|
-| **Dashboard** | Overview with KPI cards (Revenue, Customers, Orders, Stock) and a recent-orders snapshot |
-| **Customers** | Searchable customer list with status indicators and order counts        |
-| **Products**  | Product catalog with SKU, category, price, and live stock status        |
-| **Orders**    | Order management table with status filtering and running totals         |
-| **Reports**   | Monthly sales analytics and top-product breakdown with visual bars      |
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Tech Stack
+## Expanding the ESLint configuration
 
-- **React 19** – UI library
-- **Material UI v7** – Component library (AppBar, Drawer, DataTable, Chips…)
-- **Parcel** – Zero-config bundler
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## Getting Started
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-### Prerequisites
-
-- Node.js ≥ 18
-- npm ≥ 9
-
-### Install dependencies
-
-```bash
-npm install
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Run development server
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm run dev
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-Open [http://localhost:1234](http://localhost:1234) in your browser.
-
----
-
-## Project Structure
-
-```
-business-management-dashboard/
-├── components/
-│   ├── Sidebar.js      # Navigation drawer
-│   ├── Dashboard.js    # KPI cards + recent orders
-│   ├── Customers.js    # Customer management
-│   ├── Products.js     # Product catalog
-│   ├── Orders.js       # Order management
-│   └── Reports.js      # Analytics & reports
-├── App.js              # Root component with layout & navigation state
-├── index.js            # React DOM entry point
-├── index.html          # HTML shell
-└── package.json
-```
-
----
-
-## Migration Notes
-
-This repository was previously named **gesapp** and was a stub React project. The dashboard modules have been ported over from the Angular-based **gesp** application, recreating equivalent functionality as React functional components using Material UI.
-
----
-
-## License
-
-ISC
