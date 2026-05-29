@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Grid, Card, CardContent, Typography, Box, Button, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { useState } from 'react';
+import { Card, CardContent, Typography, Box, Button, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Timeline, Person, Work, Info } from '@mui/icons-material';
 
 export default function DashboardHome() {
@@ -35,8 +35,15 @@ export default function DashboardHome() {
   return (
     <Box>
       {/* Stats Grid */}
-      <Grid container spacing={3} mb={4}>
-        <Grid item xs={12} sm={6}>
+      <Box
+        sx={{
+          display: 'grid',
+          gap: 3,
+          mb: 4,
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+        }}
+      >
+        <Box>
           <Card elevation={2}>
             <CardContent>
               <Typography color="textSecondary" gutterBottom variant="h6">Users</Typography>
@@ -45,8 +52,8 @@ export default function DashboardHome() {
               <Typography variant="body2" color="success.main" sx={{ mt: 1, fontWeight: 'bold' }}>{stats.activeUsers} active</Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        </Box>
+        <Box>
           <Card elevation={2}>
             <CardContent>
               <Typography color="textSecondary" gutterBottom variant="h6">Projects</Typography>
@@ -55,11 +62,11 @@ export default function DashboardHome() {
               <Typography variant="body2" color="success.main" sx={{ mt: 1, fontWeight: 'bold' }}>{stats.activeProjects} active</Typography>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Quick Actions */}
-      <Box mb={4}>
+      <Box sx={{ mb: 4 }}>
         <Typography variant="h5" gutterBottom>Quick Actions</Typography>
         <Button variant="contained" color="primary" startIcon={<Timeline />}>
           View Roadmap
@@ -70,23 +77,29 @@ export default function DashboardHome() {
       <Card elevation={2} sx={{ mb: 4 }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>System Health</Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={4}>
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 3,
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+            }}
+          >
+            <Box>
               <Typography variant="body2" gutterBottom>CPU</Typography>
               <LinearProgress variant="determinate" value={systemHealth.cpu} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.cpu}%</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
+            </Box>
+            <Box>
               <Typography variant="body2" gutterBottom>Memory</Typography>
               <LinearProgress variant="determinate" value={systemHealth.memory} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.memory}%</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
+            </Box>
+            <Box>
               <Typography variant="body2" gutterBottom>Disk</Typography>
               <LinearProgress variant="determinate" value={systemHealth.disk} color={getHealthColor(systemHealth.status) as 'success' | 'warning' | 'error' | 'primary'} sx={{ height: 10, borderRadius: 5, mb: 1 }} />
               <Typography variant="body2" color="textSecondary">{systemHealth.disk}%</Typography>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </CardContent>
       </Card>
 
@@ -102,12 +115,13 @@ export default function DashboardHome() {
                 </ListItemIcon>
                 <ListItemText 
                   primary={activity.action} 
-                  secondary={<React.Fragment>
+                  secondary={                  <>
                     <Typography component="span" variant="body2" color="text.primary">
                       {activity.description}
                     </Typography>
                     {" — " + activity.timestamp.toLocaleTimeString()}
-                  </React.Fragment>} 
+                  </>
+                  } 
                 />
               </ListItem>
             ))}

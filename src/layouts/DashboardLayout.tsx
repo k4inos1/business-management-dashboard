@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import {
   Box,
@@ -73,12 +73,18 @@ export default function DashboardLayout() {
               <ListItemIcon sx={{ color: location.pathname === item.path ? 'primary.main' : 'inherit' }}>
                 {item.icon}
               </ListItemIcon>
-              <ListItemText 
-                primary={item.text} 
-                primaryTypographyProps={{ 
-                  fontWeight: location.pathname === item.path ? 'bold' : 'normal',
-                  color: location.pathname === item.path ? 'primary.main' : 'inherit'
-                }} 
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: location.pathname === item.path ? 'bold' : 'normal',
+                      color: location.pathname === item.path ? 'primary.main' : 'inherit',
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                }
               />
             </ListItemButton>
           </ListItem>
