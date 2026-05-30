@@ -26,7 +26,7 @@ export default function UserManagement() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4">User Management</Typography>
         <Button variant="contained" color="primary" startIcon={<AddIcon />}>
           Add User
