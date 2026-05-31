@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Timeline, Person, Work, Info } from '@mui/icons-material';
 
+const recentActivity = [
+  { type: 'user', action: 'New User Registered', description: 'John Doe joined the platform', timestamp: new Date('2026-05-31T00:00:00Z') },
+  { type: 'project', action: 'Project Updated', description: 'IoT Sensor network V2 deployed', timestamp: new Date('2026-05-30T23:00:00Z') },
+  { type: 'info', action: 'System Backup', description: 'Automated database backup completed', timestamp: new Date('2026-05-30T22:00:00Z') },
+];
+
 export default function DashboardHome() {
   const [stats] = useState({
     totalUsers: 154,
@@ -16,12 +22,6 @@ export default function DashboardHome() {
     memory: 45,
     disk: 60
   });
-
-  const [recentActivity] = useState([
-    { type: 'user', action: 'New User Registered', description: 'John Doe joined the platform', timestamp: new Date() },
-    { type: 'project', action: 'Project Updated', description: 'IoT Sensor network V2 deployed', timestamp: new Date(Date.now() - 3600000) },
-    { type: 'info', action: 'System Backup', description: 'Automated database backup completed', timestamp: new Date(Date.now() - 7200000) },
-  ]);
 
   const getHealthColor = (status: string) => {
     switch (status) {
