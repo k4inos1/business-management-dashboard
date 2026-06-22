@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Grid, Typography, Button, Chip } from '@mui/material';
 import {
   TrendingUp, TrendingDown, ArrowForward, AutoAwesome,
-  CheckCircleOutline, Warning, InfoOutlined,
+  CheckCircleOutlined, Warning, InfoOutlined,
 } from '@mui/icons-material';
 import {
   KPI_METRICS, MONTHLY_TREND, RECENT_ACTIVITY, AI_INSIGHTS,
@@ -279,8 +279,8 @@ function ActivityFeed() {
     ingestion: <InfoOutlined sx={{ fontSize: 14, color: '#2563eb' }} />,
     classification: <AutoAwesome sx={{ fontSize: 14, color: '#7c3aed' }} />,
     alert: <Warning sx={{ fontSize: 14, color: '#dc2626' }} />,
-    report: <CheckCircleOutline sx={{ fontSize: 14, color: '#059669' }} />,
-    integration: <CheckCircleOutline sx={{ fontSize: 14, color: '#059669' }} />,
+    report: <CheckCircleOutlined sx={{ fontSize: 14, color: '#059669' }} />,
+    integration: <CheckCircleOutlined sx={{ fontSize: 14, color: '#059669' }} />,
     taxonomy: <AutoAwesome sx={{ fontSize: 14, color: '#7c3aed' }} />,
   };
 
@@ -380,7 +380,7 @@ export default function DashboardHome() {
       {/* KPI Cards */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
         {KPI_METRICS.map((metric, i) => (
-          <Grid item xs={6} sm={4} md={2} key={metric.label}>
+          <Grid size={{ xs: 6, sm: 4, md: 2 }} key={metric.label}>
             <KPICard metric={metric} delay={i * 80} />
           </Grid>
         ))}
@@ -388,20 +388,20 @@ export default function DashboardHome() {
 
       {/* Charts Row */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <TrendChart />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <TopCategories />
         </Grid>
       </Grid>
 
       {/* Bottom Row */}
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <ActivityFeed />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           {/* Quick AI Insights */}
           <Box className="chart-wrap" sx={{ height: '100%' }}>
             <Box className="section-header">

@@ -138,7 +138,7 @@ export default function IntegrationsHub() {
           onChange={e => setSearch(e.target.value)}
           size="small"
           sx={{ width: 200, '& .MuiOutlinedInput-root': { fontSize: 12, borderRadius: '8px' } }}
-          InputProps={{ startAdornment: <InputAdornment position="start"><Search sx={{ fontSize: 14, color: 'var(--text-muted)' }} /></InputAdornment> }}
+          slotProps={{ input: { startAdornment: <InputAdornment position="start"><Search sx={{ fontSize: 14, color: 'var(--text-muted)' }} /></InputAdornment> } }}
         />
         <ToggleButtonGroup value={category} exclusive onChange={(_, v) => v && setCategory(v)} size="small" sx={{ flexWrap: 'wrap', gap: 0.5, '& .MuiToggleButtonGroup-root': { flexWrap: 'wrap' }, '& .MuiToggleButton-root': { textTransform: 'none', fontSize: 11, fontWeight: 600, px: 1.25, border: '1px solid var(--border)', borderRadius: '8px !important' } }}>
           {categories.map(c => (
