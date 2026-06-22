@@ -183,7 +183,7 @@ export default function FeedbackIntelligence() {
             onChange={e => setSearch(e.target.value)}
             size="small"
             sx={{ flex: 1, minWidth: 200, '& .MuiOutlinedInput-root': { fontSize: 13, borderRadius: '8px' } }}
-            InputProps={{ startAdornment: <InputAdornment position="start"><Search sx={{ fontSize: 16, color: 'var(--text-muted)' }} /></InputAdornment> }}
+            slotProps={{ input: { startAdornment: <InputAdornment position="start"><Search sx={{ fontSize: 16, color: 'var(--text-muted)' }} /></InputAdornment> } }}
           />
           <ToggleButtonGroup
             value={sentiment} exclusive
